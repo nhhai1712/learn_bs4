@@ -1,0 +1,42 @@
+{
+    "Bitcoin": {
+        "symbol": "BTC",
+        "price": "$26,875.96"
+    },
+    "Ethereum": {
+        "symbol": "ETH",
+        "price": "$1,556.73"
+    },
+    "Tether USDt": {
+        "symbol": "USDT",
+        "price": "$1.00"
+    },
+    "BNB": {
+        "symbol": "BNB",
+        "price": "$207.35"
+    },
+    "XRP": {
+        "symbol": "XRP",
+        "price": "$0.4882"
+    },
+    "USDC": {
+        "symbol": "USDC",
+        "price": "$1.00"
+    },
+    "Solana": {
+        "symbol": "SOL",
+        "price": "$21.97"
+    },
+    "Cardano": {
+        "symbol": "ADA",
+        "price": "$0.2474"
+    },
+    "Dogecoin": {
+        "symbol": "DOGE",
+        "price": "$0.05942"
+    },
+    "TRON": {
+        "symbol": "TRX",
+        "price": "$0.08539"
+    }
+}
