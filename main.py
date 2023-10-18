@@ -24,7 +24,8 @@ driver = webdriver.Chrome(service=ChromeService(
 # URL of the web page you want to scrape
 
 data_coin = []
-for i in range(1):
+column_names = ["", "ID", "Name", "Price", "1h %", "24h %", "7d %", "Market Cap", "Volumn(24h)", "Circulating Supply"]
+for i in range(1,89):
     url = f"https://coinmarketcap.com/?page={i}"
     driver.get(url)
     time.sleep(2)
@@ -58,10 +59,30 @@ for i in range(1):
     tr_elements = tbody_element.find_elements(By.TAG_NAME, "tr")
     
     for tr_element in tr_elements:
-        print(tr_element.text)
+        # print(tr_element.text)
+        td_elements = tr_element.find_elements(By.TAG_NAME, "td")
+        row = {}
+        for i, td_element in enumerate(td_elements):
+            if i < len(column_names):
+                column_name = column_names[i]
+            else:
+                column_name = f"col{i}"
+            column_value = td_element.text
+            if(td_element.find_elements(By.CLASS_NAME, "icon-Caret-down")):
+                column_value = "-" + column_value
+            if(td_element.find_elements(By.CLASS_NAME, "icon-Caret-up")):
+                column_value = "+" + column_value
+            if '\n' in column_value:
+                column_value = column_value.replace('\n', ' - ')   
+            if column_value.strip() != "":
+                row[column_name] = column_value
+            
+        
+        if row:
+            data_coin.append(row)
 
-    # with open("data_coin.json", "w") as json_file:
-    #     json.dump(data_coin, json_file, indent=4)
+    with open("data_coin.json", "w") as json_file:
+        json.dump(data_coin, json_file, indent=4)
 driver.close()
     
 # Close the Selenium browser
