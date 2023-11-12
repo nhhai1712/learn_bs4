@@ -25,7 +25,7 @@ driver = webdriver.Chrome(service=ChromeService(
 
 data_coin = []
 column_names = ["", "ID", "Name", "Price", "1h %", "24h %", "7d %", "Market Cap", "Volumn(24h)", "Circulating Supply"]
-for i in range(1,89):
+for i in range(1,2):
     url = f"https://coinmarketcap.com/?page={i}"
     driver.get(url)
     time.sleep(2)
@@ -81,7 +81,7 @@ for i in range(1,89):
         if row:
             data_coin.append(row)
 
-    with open("data_coin.json", "w") as json_file:
+    with open("test_data_coin.json", "w") as json_file:
         json.dump(data_coin, json_file, indent=4)
 driver.close()
     
